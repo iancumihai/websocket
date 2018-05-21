@@ -18,7 +18,7 @@
 
 #include "tlse.c"
 
-#define SERVER_VERSION "2017.12.17.4"
+#define SERVER_VERSION "2018.05.21.0"
 
 #define port 443
 #define MAX_CONNECTIONS         1024
@@ -417,6 +417,7 @@ int ws_send(struct HTTPConnection *connection, const char *buffer, int size)
 void on_ws_data(struct HTTPConnection *connection, const char *buffer, int size) 
 {
 	DEBUG_INFO("WS DATA: %s\n", buffer);
+	ws_send(connection, buffer, size);
 }
 //--------------------------------------------------------------------
 int on_data_received(struct HTTPConnection *connection, const char *buffer, int size)
